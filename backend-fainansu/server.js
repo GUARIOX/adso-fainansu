@@ -15,13 +15,13 @@ app.set('port', process.env.PORT || 4000) // Se setea el puerto, toma 4000 si no
 // Middlewares
 app.use(bodyParser.urlencoded({extended:false})); // Para recibir datos desde un Formulario
 app.use(bodyParser.json()); // Para que el servidor pueda recibir formato Json
-app.use(morgan('combined')); // la opcion dev de la informacion principal. Combined da mas detalle
+app.use(morgan('dev')); // la opcion dev de la informacion principal. Combined da mas detalle
 
 
-// app.use('/api/v1/users', require('./api/v1/routes/users.routes'));
-// app.use('/api/v1/articles', require('./api/v1/routes/articles.routes'));
+app.use('/api/v1/users', require('./api/v1/routes/users.routes'));
+
 
 // Starting de server
 app.listen(app.get('port'), ()=>{
-    console.log(`Server running on localhost:${app.get('port')}`);
-})
+    console.log(`Server running on http://localhost:${app.get('port')}/api/v1/`);
+});
