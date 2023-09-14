@@ -19,6 +19,8 @@ app.use(morgan('dev')); // la opcion dev de la informacion principal. Combined d
 
 
 app.use('/api/v1/users', require('./api/v1/routes/users.routes'));
+app.use('/api/v1/registers', require('./api/v1/routes/registers.routes'));
+app.use('/api/v1/currencies', require('./api/v1/routes/currencies.routes'));
 
 
 // Starting de server
