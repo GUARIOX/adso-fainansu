@@ -10,7 +10,7 @@ const getAll = async (req, res)=>{
     }
 }
 const get = async (req, res)=>{
-    let id = req.params.userId;
+    let id = req.params.currencyId;
     try {
         const user = await currencyService.get(id);
         res.status(200).send({status: 'ok', data: user});
@@ -50,7 +50,7 @@ const create = async (req, res)=>{
 };
 const update = async (req, res)=>{
 
-    const id = req.params.userId;
+    const id = req.params.currencyId;
     const {name, email, password, country} = req.body;
 
     const updatedUser = await userService.update(id, name, email, password, country);
@@ -63,7 +63,7 @@ const update = async (req, res)=>{
 };
 const destroy = async (req, res)=>{
 
-    const id = req.params.userId;
+    const id = req.params.currencyId;
 
     const deletedUser = await userService.destroy(id);
 

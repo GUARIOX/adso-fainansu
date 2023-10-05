@@ -5,9 +5,9 @@ const {Router} = require('express');
 const router = Router();
 
 router.get('/', currencyController.getAll);
-router.get('/:userId', currencyController.get);
+router.get('/:currencyId', currencyController.get);
 router.post('/', currencyController.create);
-router.put('/:userId', currencyController.update);
-router.delete('/:userId', currencyController.destroy);
+router.put('/:currencyId', currencyController.update);
+router.delete('/:currencyId', currencyController.destroy);
 
 module.exports = router;

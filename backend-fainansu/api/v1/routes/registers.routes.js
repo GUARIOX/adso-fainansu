@@ -5,9 +5,9 @@ const {Router} = require('express');
 const router = Router();
 
 router.get('/', registerController.getAll);
-router.get('/:userId', registerController.get);
+router.get('/:registerId', registerController.get);
 router.post('/', registerController.create);
-router.put('/:userId', registerController.update);
-router.delete('/:userId', registerController.destroy);
+router.put('/:registerId', registerController.update);
+router.delete('/:registerId', registerController.destroy);
 
 module.exports = router;
