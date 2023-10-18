@@ -8,9 +8,9 @@
   },
   "development2": {
     "username": "fainansu",
-    "password": "root",
+    "password": "FmTQ2wrGQfilhgRsyUJXlewisBIY2nRd",
     "database": "db_fainansu",
-    "host": "127.0.0.1",
+    "host": "oregon-postgres.render.com",
     "dialect": "postgres"
   },
   "test": {
