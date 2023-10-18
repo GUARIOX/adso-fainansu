@@ -1,12 +1,18 @@
 {
-  "development": {
+  "development2": {
     "username": "fainansu",
     "password": "FmTQ2wrGQfilhgRsyUJXlewisBIY2nRd",
     "database": "db_fainansu",
     "host": "oregon-postgres.render.com",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl":{
+        "require":true,
+        "rejectUnauthorized":false
+      }
+    }
   },
-  "development2": {
+  "development": {
     "username": "root",
     "password": null,
     "database": "db_fainansu",
