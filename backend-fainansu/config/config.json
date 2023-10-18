@@ -7,7 +7,7 @@
     "dialect": "mysql"
   },
   "development2": {
-    "username": "postgres",
+    "username": "fainansu",
     "password": "root",
     "database": "db_fainansu",
     "host": "127.0.0.1",
