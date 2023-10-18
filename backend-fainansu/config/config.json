@@ -1,5 +1,5 @@
 {
-  "development2": {
+  "production": {
     "username": "fainansu",
     "password": "FmTQ2wrGQfilhgRsyUJXlewisBIY2nRd",
     "database": "db_fainansu",
@@ -26,7 +26,7 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
+  "development2": {
     "username": "root",
     "password": null,
     "database": "database_production",
