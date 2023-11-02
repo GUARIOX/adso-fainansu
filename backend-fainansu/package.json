@@ -7,6 +7,7 @@
     "dev": "nodemon server.js",
     "migrate": "npx sequelize db:migrate",
     "migrate-undo": "npx sequelize db:migrate:undo:all",
+    "all": "npm install && npx sequelize db:migrate:undo:all && npx sequelize db:migrate", 
     "start": "node server.js",
     "createdb": "npx sequelize db:create"
   },
