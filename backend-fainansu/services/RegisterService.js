@@ -1,8 +1,8 @@
 const db = require("../models");
 
-const create = async (fecha_creacion, hora_creacion, monto, descripcion, UserId) => {
+const create = async (fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId) => {
   try {
-    const newRegister = await db.Register.create({ fecha_creacion, hora_creacion, monto, descripcion, UserId });
+    const newRegister = await db.Register.create({ fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId });
     return newRegister;
   } catch (error) {
     return error.message || "failed to create register";
@@ -27,10 +27,10 @@ const get = async (id) => {
   }
 };
 
-const update = async (id, fecha_creacion, hora_creacion, monto, descripcion, UserId) => {
+const update = async (id, fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId) => {
   try {
     const updatedRegister = await db.Register.update(
-      { fecha_creacion, hora_creacion, monto, descripcion, UserId },
+      { fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId },
       { where: { id } }
     );
     return updatedRegister;

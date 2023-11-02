@@ -1,34 +1,28 @@
 'use strict';
-
-const currency = require('../models/currency');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('categories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING(80)
-      },
-      email: {
-        type: Sequelize.STRING(50)
-      },
-      password: {
+      name_ctg: {
         type: Sequelize.STRING
       },
-      country: {
+      icon: {
         type: Sequelize.STRING
       },
-      CurrencyId: {
+      type: {
+        type: Sequelize.STRING
+      },
+      UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Currencies',
+          model: 'Users',
           key: 'id'
         }
       },
@@ -43,6 +37,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('categories');
   }
 };

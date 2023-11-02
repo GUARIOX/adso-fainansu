@@ -22,7 +22,7 @@ const get = async (req, res)=>{
 
 const create = async (req, res)=>{
 
-    const {fecha_creacion, hora_creacion, monto, descripcion, UserId} = req.body;
+    const {fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId} = req.body;
 
     if(!fecha_creacion){
         res.status(400).send({status: 'failed', message: 'fecha_creacion should not be empty', data: null});
@@ -39,8 +39,11 @@ const create = async (req, res)=>{
     else if(!UserId){
         res.status(400).send({status: 'failed', message: 'UserId should not be empty', data: null});
     }
+    else if(!CategoryId){
+        res.status(400).send({status: 'failed', message: 'CategoryId should not be empty', data: null});
+    }
     else{
-        const createdRegister = await registerService.create(fecha_creacion, hora_creacion, monto, descripcion, UserId);
+        const createdRegister = await registerService.create(fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId);
         if  (createdRegister){
             res.status(201).send({status: 'OK', message: 'register created', data: createdRegister});
         }else{
@@ -53,9 +56,9 @@ const create = async (req, res)=>{
 const update = async (req, res)=>{
 
     const id = req.params.registerId;
-    const {fecha_creacion, hora_creacion, monto, descripcion, UserId} = req.body;
+    const {fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId} = req.body;
 
-    const updatedRegister = await registerService.update(id, fecha_creacion, hora_creacion, monto, descripcion, UserId);
+    const updatedRegister = await registerService.update(id, fecha_creacion, hora_creacion, monto, descripcion, UserId, CategoryId);
 
     if  (updatedRegister){
         res.status(201).send({status: 'OK', message: 'register updated', data: updatedRegister});

@@ -1,19 +1,19 @@
-const userService = require('../services/CurrencyService');
+const currencyService = require('../services/CurrencyService');
 
 const getAll = async (req, res)=>{
-    const users = await currencyService.getAll();
-    if(users){
-        res.status(200).send({status: 'ok', data: users});
+    const currencies = await currencyService.getAll();
+    if(currencies){
+        res.status(200).send({status: 'ok', data: currencies});
     }
     else{
-        res.status(404).send({status:'failed', data: error});
+        res.status(404).send({status:'failed', data: currencies});
     }
 }
 const get = async (req, res)=>{
     let id = req.params.currencyId;
     try {
-        const user = await currencyService.get(id);
-        res.status(200).send({status: 'ok', data: user});
+        const currency = await currencyService.get(id);
+        res.status(200).send({status: 'ok', data: currency});
     } catch (error) {
         res.status(error.status||500).send({status:'failed', data: {error: error.message} }); 
     }
@@ -22,25 +22,19 @@ const get = async (req, res)=>{
 
 const create = async (req, res)=>{
 
-    const {name, email, password, country} = req.body;
+    const {type, logo,} = req.body;
 
-    if(!name){
-        res.status(400).send({status: 'failed', message: 'name should not be empty', data: null});
+    if(!type){
+        res.status(400).send({status: 'failed', message: 'type should not be empty', data: null});
     }
-    else if(!email){
-        res.status(400).send({status: 'failed', message: 'email should not be empty', data: null});
-    }
-    else if(!password){
-        res.status(400).send({status: 'failed', message: 'password should not be empty', data: null});
-    }
-    else if(!country){
-        res.status(400).send({status: 'failed', message: 'country should not be empty', data: null});
+    else if(!logo){
+        res.status(400).send({status: 'failed', message: 'logo should not be empty', data: null});
     }
     
     else{
-        const createdUser = await userService.create(name, email, password, country);
-        if  (createdUser){
-            res.status(201).send({status: 'OK', message: 'user created', data: createdUser});
+        const createdCurrency = await currencyService.create(type, logo);
+        if  (createdCurrency){
+            res.status(201).send({status: 'OK', message: 'user created', data: createdCurrency});
         }else{
             res.status(400).send({status: 'failed', data: {error: error.message}});
         }
@@ -51,12 +45,12 @@ const create = async (req, res)=>{
 const update = async (req, res)=>{
 
     const id = req.params.currencyId;
-    const {name, email, password, country} = req.body;
+    const {type, logo} = req.body;
 
-    const updatedUser = await userService.update(id, name, email, password, country);
+    const updatedCurrency = await currencyService.update(id, type, logo);
 
-    if  (updatedUser){
-        res.status(201).send({status: 'OK', message: 'user updated', data: updatedUser});
+    if  (updatedCurrency){
+        res.status(201).send({status: 'OK', message: 'user updated', data: updatedCurrency});
     }else{
         res.status(400).send({status: 'failed', data: null});
     }
@@ -65,10 +59,10 @@ const destroy = async (req, res)=>{
 
     const id = req.params.currencyId;
 
-    const deletedUser = await userService.destroy(id);
+    const deletedCurrency = await currencyService.destroy(id);
 
-    if  (deletedUser){
-        res.status(201).send({status: 'OK', message: 'user deleted', data: deletedUser});
+    if  (deletedCurrency ){
+        res.status(201).send({status: 'OK', message: 'user deleted', data: deletedCurrency });
     }else{
         res.status(400).send({status: 'failed', data: { error: error.message }});
     }

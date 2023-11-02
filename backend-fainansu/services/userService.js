@@ -1,8 +1,8 @@
 const db = require("../models");
 
-const create = async (name, email, password, country) => {
+const create = async (name, email, password, country, CurrencyId) => {
   try {
-    const newUser = await db.User.create({ name, email, password, country });
+    const newUser = await db.User.create({ name, email, password, country, CurrencyId });
     return newUser;
   } catch (error) {
     return error.message || "failed to create user";
@@ -27,10 +27,10 @@ const get = async (id) => {
   }
 };
 
-const update = async (id, name, email, password, country) => {
+const update = async (id, name, email, password, country, CurrencyId) => {
   try {
     const updatedUser = await db.User.update(
-      { name, email, password, country },
+      { name, email, password, country, CurrencyId },
       { where: { id } }
     );
     return updatedUser;

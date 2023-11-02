@@ -1,4 +1,4 @@
-const userService = require('../services/userService');
+const userService = require('../services/UserService');
 
 const getAll = async (req, res)=>{
     const users = await userService.getAll();
@@ -22,7 +22,7 @@ const get = async (req, res)=>{
 
 const create = async (req, res)=>{
 
-    const {name, email, password, country} = req.body;
+    const {name, email, password, country, CurrencyId } = req.body;
 
     if(!name){
         res.status(400).send({status: 'failed', message: 'name should not be empty', data: null});
@@ -36,9 +36,12 @@ const create = async (req, res)=>{
     else if(!country){
         res.status(400).send({status: 'failed', message: 'country should not be empty', data: null});
     }
+    else if(!CurrencyId){
+        res.status(400).send({status: 'failed', message: 'CurrencyId should not be empty', data: null});
+    }
     
     else{
-        const createdUser = await userService.create(name, email, password, country);
+        const createdUser = await userService.create(name, email, password, country, CurrencyId);
         if  (createdUser){
             res.status(201).send({status: 'OK', message: 'user created', data: createdUser});
         }else{
@@ -51,9 +54,9 @@ const create = async (req, res)=>{
 const update = async (req, res)=>{
 
     const id = req.params.userId;
-    const {name, email, password, country} = req.body;
+    const {name, email, password, country, CurrencyId} = req.body;
 
-    const updatedUser = await userService.update(id, name, email, password, country);
+    const updatedUser = await userService.update(id, name, email, password, country, CurrencyId);
 
     if  (updatedUser){
         res.status(201).send({status: 'OK', message: 'user updated', data: updatedUser});
