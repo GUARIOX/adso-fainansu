@@ -1,8 +1,8 @@
 {
   "production": {
     "username": "fainansu",
-    "password": "qxg3VQsDvmQlmwDZCDYuqrRpS34Ezzjn",
-    "database": "db_fainansu_41ns",
+    "password": "1w27cU9IpTDmhyhcohfC4oRtoGECm7cF",
+    "database": "db_fainansu_la01",
     "host": "oregon-postgres.render.com",
     "dialect": "postgres",
     "dialectOptions": {
