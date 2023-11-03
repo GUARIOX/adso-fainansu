@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     // }
     static associate(models) {
     // define association here
-      Register.belongsTo(models.Category)
       Register.belongsTo(models.User)
+      Register.belongsTo(models.Category)
     }
   }
   Register.init({
