@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.belongsTo(models.Currency)
       User.hasMany(models.Calculator)
+      User.hasMany(models.Category)
+      User.hasMany(models.Register)
       // models.Currency.hasMany(User)
     }
   }

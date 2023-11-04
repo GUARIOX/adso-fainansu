@@ -17,12 +17,11 @@ app.use(bodyParser.urlencoded({extended:false})); // Para recibir datos desde un
 app.use(bodyParser.json()); // Para que el servidor pueda recibir formato Json
 app.use(morgan('dev')); // la opcion dev de la informacion principal. Combined da mas detalle
 
-
-app.use('/api/v1/users', require('./api/v1/routes/users.routes'));
-//app.use('/api/v1/registers', require('./api/v1/routes/registers.routes'));
 app.use('/api/v1/currencies', require('./api/v1/routes/currencies.routes'));
-//app.use('/api/v1/categories', require('./api/v1/routes/categories.routes'));
+app.use('/api/v1/users', require('./api/v1/routes/users.routes'));
 app.use('/api/v1/calculators', require('./api/v1/routes/calculators.routes'));
+app.use('/api/v1/categories', require('./api/v1/routes/categories.routes'));
+app.use('/api/v1/registers', require('./api/v1/routes/registers.routes'));
 
 
 // Starting de server
