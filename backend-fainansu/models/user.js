@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require("bcrypt")
+
 const {
   Model
 } = require('sequelize');
@@ -28,5 +30,48 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
+
+  User.login = async function (email, password) {
+    let user = await User.findOne({
+      where: {
+        email: email
+      },
+      attributes: {
+        exclude: [ 
+            'id',
+            'name',
+            'email',
+            'password',
+            'country'
+         ]
+      }
+    });
+    if (!user) return { status: 404, message: "User no encontrado" };
+    let valid = await user.authenticatePassword(password);
+    return valid ? {
+      status : 200,
+      user,
+    } : {
+      status: 401,
+      message: "Contraseña invalida"
+    };
+  };
+
+  User.prototype.authenticatePassword = async function (password) {
+    try {
+      let valid = await bcrypt.compare(password, this.password);
+      return valid;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  User.beforeBulkCreate(async function (user, options) {
+    if (user.password) {
+      user.password = await bcrypt.hash(user.password, 10);
+      return;
+    }
+  });
+
   return User;
 };

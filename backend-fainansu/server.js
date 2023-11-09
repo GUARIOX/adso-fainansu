@@ -18,6 +18,7 @@ app.use(bodyParser.json()); // Para que el servidor pueda recibir formato Json
 app.use(morgan('dev')); // la opcion dev de la informacion principal. Combined da mas detalle
 app.use(cors())
 
+app.use('/api/v1/auth',require('./api/v1/routes/auth.routes'));
 app.use('/api/v1/currencies', require('./api/v1/routes/currencies.routes'));
 app.use('/api/v1/users', require('./api/v1/routes/users.routes'));
 app.use('/api/v1/calculators', require('./api/v1/routes/calculators.routes'));
