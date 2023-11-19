@@ -4,10 +4,10 @@ const {Router} = require('express');
 
 const router = Router();
 
-router.get('/', calculatorController.getAll);
-router.get('/:calculatorId', calculatorController.get);
-router.post('/', calculatorController.create);
-router.put('/:calculatorId', calculatorController.update);
-router.delete('/:calculatorId', calculatorController.destroy);
+router.get('/verify', calculatorController.getAll);
+router.get('/:calculatorId/verify', calculatorController.get);
+router.post('/verify', calculatorController.create);
+router.put('/:calculatorId/verify', calculatorController.update);
+router.delete('/:calculatorId/verify', calculatorController.destroy);
 
 module.exports = router;

@@ -4,10 +4,10 @@ const {Router} = require('express');
 
 const router = Router();
 
-router.get('/', userController.getAll);
-router.get('/:userId', userController.get);
-router.post('/', userController.create);
-router.put('/:userId', userController.update);
-router.delete('/:userId', userController.destroy);
+router.get('/verify', userController.getAll);
+router.get('/:userId/verify', userController.get);
+router.post('/verify', userController.create);
+router.put('/:userId/verify', userController.update);
+router.delete('/:userId/verify', userController.destroy);
 
 module.exports = router;

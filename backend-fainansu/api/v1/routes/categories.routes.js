@@ -4,10 +4,10 @@ const {Router} = require('express');
 
 const router = Router();
 
-router.get('/', categoryController.getAll);
-router.get('/:categoryId', categoryController.get);
-router.post('/', categoryController.create);
-router.put('/:categoryId', categoryController.update);
-router.delete('/:categoryId', categoryController.destroy);
+router.get('/verify', categoryController.getAll);
+router.get('/:categoryId/verify', categoryController.get);
+router.post('/verify', categoryController.create);
+router.put('/:categoryId/verify', categoryController.update);
+router.delete('/:categoryId/verify', categoryController.destroy);
 
 module.exports = router;
